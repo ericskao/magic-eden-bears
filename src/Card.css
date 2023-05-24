@@ -1,0 +1,32 @@
+.nft-card {
+  background-color: #120c18;
+  border-radius: 8px;
+  border: 2px solid rgba(51, 39, 63, 1);
+}
+
+.nft-image {
+  border-radius: 8px;
+  padding: 0 1px;
+  max-width: 300px;
+
+  @media (max-width: 750px) {
+    max-width: 500px;
+  }
+}
+
+.nft-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.nft-sol {
+  height: 20px;
+}
+
+.nft-price {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
