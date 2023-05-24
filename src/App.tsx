@@ -1,7 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import "./App.css";
 import Card from "./Card.js";
 import { throttle } from "./utils/throttle.js";
+
+import "./App.css";
 
 export interface MintInterface {
   img: string;
@@ -17,14 +18,13 @@ function App() {
   const [query, setQuery] = useState("");
   const [collection, setCollection] = useState<MintInterface[]>([]);
   const [fetching, setFetching] = useState<boolean>(false);
-  const [bears, setBears] = useState<boolean>(true);
 
   const fetchNfts = async (paginationId?: number) => {
     setFetching(true);
     const response = await fetch(
-      `https://api-mainnet.magiceden.io/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=${
-        bears ? "okay_bears" : "artificial_irrelevants"
-      }&limit=20&offset=${paginationId || 0}`
+      `https://api-mainnet.magiceden.io/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears&limit=20&offset=${
+        paginationId || 0
+      }`
     );
     const jsonData = await response.json();
     setFetching(false);
@@ -55,7 +55,7 @@ function App() {
       }
     }
 
-    // throttle scrolling so we only fire one request
+    // throttle scrolling so we only fire one request during scroll
     const throttledScroll = throttle(handleScroll);
 
     window.addEventListener("scroll", throttledScroll);
@@ -81,7 +81,6 @@ function App() {
 
   return (
     <div className="app">
-      <button>View {bears ? "Artificial Irrelevants" : "Bears"}</button>
       <div className="collection-header">
         {collectionInfo && (
           <div>
