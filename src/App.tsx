@@ -50,7 +50,7 @@ function App() {
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
         100;
-      if (scrollPercentage >= 80 && !fetching) {
+      if (scrollPercentage >= 60 && !fetching) {
         loadNfts();
       }
     }
